@@ -31,7 +31,7 @@ class OlliesBargainOutletSpider(scrapy.Spider):
         for data in response.json().get("Locations"):
             item = DictParser.parse(data)
             item["country"] = "US"
-            item["website"] = f'https://www.{self.allowed_domains[0]}{data.get("CustomUrl")}'
+            item["ref"] = item["website"] = f'https://www.{self.allowed_domains[0]}{data.get("CustomUrl")}'
 
             openHours = data.get("OpenHours").split("<br />")
             openHourFiltered = [row.replace(":", "") for row in openHours if "-" in row]
