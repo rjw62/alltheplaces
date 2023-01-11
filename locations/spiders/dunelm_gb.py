@@ -35,9 +35,8 @@ class DunelmGB(Spider):
             for rule in store["openingHours"]:
                 oh.add_range(rule["day"], rule["open"], rule["close"])
 
-            item["opening_hours"] = oh.as_opening_hours()
+            item["opening_hours"] = oh
 
-            item["email"] = store["email"]
             item["extras"] = {"storeType": store.get("storeType")}
 
             yield item
