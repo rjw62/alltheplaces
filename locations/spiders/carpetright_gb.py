@@ -8,7 +8,7 @@ class CarpetrightGBSpider(CrawlSpider, StructuredDataSpider):
     name = "carpetright_gb"
     item_attributes = {"brand": "Carpetright", "brand_wikidata": "Q5045782"}
     start_urls = ["https://www.carpet-right.co.uk/stores/search"]
-    rules = [Rule(LinkExtractor(r"https://www.carpet-right.co.uk/stores/(.+-carpetright)$"), "parse")]
+    rules = [Rule(LinkExtractor(r"https://www.carpet-right.co.uk/stores/(.+-carpetright(-clearance-store)?)$"), "parse")]
     wanted_types = ["HomeGoodsStore"]
 
     def post_process_item(self, item, response, ld_data, **kwargs):
